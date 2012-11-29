@@ -1,0 +1,130 @@
+<!doctype>
+<!--
+	bannerTweet (Trasforma un tweet in un banner anni '90/2000)
+	  Copyright (C) 2012 Sergio Terrasi, http://www.nerdissimo.it/
+	   
+	   This program is free software; you can redistribute it and/or
+	   modify it under the terms of the GNU General Public License
+	   as published by the Free Software Foundation; either version 2
+	   of the License, or (at your option) any later version.
+	   
+	   This program is distributed in the hope that it will be useful,
+	   but WITHOUT ANY WARRANTY; without even the implied warranty of
+	   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	   GNU General Public License for more details.
+	   
+	   You should have received a copy of the GNU General Public License
+	   along with this program; if not, write to the Free Software
+	   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+	Author: Nerdissimo
+	Website: http://www.nerdissimo.it
+	email: dev@nerdissimo.it
+	Twitter: @Nerdissimo
+-->
+<html>
+	<head>
+		<meta charset="utf8" />
+		<title>Bannerizza il tweet!</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" / >
+		<style type="text/css">
+			* {
+				margin:0;border:0;padding:0;background-color:#fff;color:#000;
+				font-size:12px;
+				font-family:verdana,arial,helvetica,sans-serif;
+			}
+			@-moz-keyframes move {
+				0%, 100% { top:2px; left:2px; border-color:#f00; }
+				25% { top:2px; left:2px; }
+				50% { top:-2px; border-color:#00f; }
+				75% { top:2px; left:-2px; }
+			}
+			@-webkit-keyframes move {
+				0%, 100% { top:-2px; left:-2px; border-color:#f00; }
+				25% { top:2px; left:2px; }
+				50% { top:-2px; border-color:#00f; }
+				75% { top:2px; left:-2px; }
+			}
+			@keyframes move {
+				0%, 100% { top:2px; left:2px; border-color:#f00; }
+				25% { top:2px; left:2px; }
+				50% { top:-2px; border-color:#00f; }
+				75% { top:2px; left:-2px; }
+			}
+			blockquote {
+				-moz-animation: move 0.2s linear infinite;
+				-webkit-animation: move 0.2s linear infinite;
+				animation: move 0.2s linear infinite;
+				position:relative;
+				max-width:460px;
+				min-width:460px;
+				width:460;
+				margin:10% auto;
+				border:10px solid #0f0;
+				padding:10px;
+				font-size:.8em;
+				z-index:10;
+			}
+			blockquote:hover {
+				-moz-animation:none;
+				-webkit-animation:none;
+				animation:none;
+			}
+			p {
+				font-size:2em;
+				line-height:1.3em;
+				margin-bottom:20px;
+			}
+			a { color:#000; }
+			p a {font-size:1em;}
+			header {
+				position:fixed;
+				top:2px;
+				left:2px;
+				font-size:.9em;
+			}
+		</style>
+		<script type="text/javascript">
+			var bannerTweet={
+				globals:{_b:true},
+				init:function(){
+					this.globals.wrapper=document.getElementById("banners");
+					this.globals.tweetsId=location.hash.substring(1,location.hash.length).split(",");
+					for(var i=0;i<this.globals.tweetsId.length;i++) this.get(this.globals.tweetsId[i]);
+				},
+				get:function(p_id) {
+					var script=document.createElement("script");
+					script.type="text/javascript";
+					script.src="https://api.twitter.com/1/statuses/oembed.json?id="+p_id+"&callback=bannerTweet.show";
+					document.getElementsByTagName("head")[0].appendChild(script);
+				},
+				show:function(p_tweet) {
+					var el=document.createElement("div");
+					el.innerHTML=p_tweet.html;
+					el.removeChild(el.getElementsByTagName("script")[0]);
+					if(this.globals._b) this.globals.wrapper.innerHTML=this.globals._b="";
+					window.setTimeout(function(){
+						bannerTweet.globals.wrapper.appendChild(el.getElementsByTagName("blockquote")[0]);
+					},200*Math.random());
+				}
+			};
+			window.onload=function(){
+				bannerTweet.init();
+			};
+		</script>
+	</head>
+	<body>
+		<header>
+			Perché a volte un RT non basta. Trasforma un tweet in un bruttissimo banner!<br />
+			Aggiungi un hashtag in fondo all'URL con l'id del tweet da bannerizzare! (Puoi trovarlo nei dettagli del tweet)<br />
+			by <a href="http://www.twitter.com/Nerdissimo" title="Nerdissimo">@Nerdissimo</a>
+		</header>
+		<div id="banners">
+			<blockquote>
+				<p>Aggiungi un hashtag in fondo all'URL con l'id del tweet da bannerizzare! (Puoi trovarlo nei dettagli del tweet)</p>
+				— <a href="http://www.twitter.com/Nerdissimo" title="Nerdissimo">@Nerdissimo</a>
+			</blockquote>
+		</div>
+	</body>
+</html>
