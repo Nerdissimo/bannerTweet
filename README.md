@@ -3,9 +3,14 @@
 Trasforma un tweet in un banner anni '90/2000.
 
 
+## URL
+
+* http://bannertweet.nerdissimo.it
+
+
 ## Legal informations
 
-bannerTweet è un progetto open source sotto licenza MIT e GPLv2.
+bannerTweet is an open source project dual licensed by MIT and GPLv2.
 
 
 ## Support
