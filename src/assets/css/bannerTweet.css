@@ -1,0 +1,96 @@
+/*
+bannerTweet (Trasforma un tweet in un banner anni '90)
+  Copyright (C) 2012 Sergio Terrasi, http://www.nerdissimo.it/
+   
+   This program is free software; you can redistribute it and/or
+   modify it under the terms of the GNU General Public License
+   as published by the Free Software Foundation; either version 2
+   of the License, or (at your option) any later version.
+   
+   This program is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+   
+   You should have received a copy of the GNU General Public License
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+Author: Nerdissimo
+Website: http://www.nerdissimo.it
+email: dev@nerdissimo.it
+GitHub: https://github.com/Nerdissimo/
+Twitter: @Nerdissimo
+*/
+* {
+	margin:0;
+	border:0;
+	padding:0;
+	background-color:#fff;
+	color:#000;
+	font-size:12px;
+	font-family:verdana,arial,helvetica,sans-serif;
+	-moz-text-size-adjust:none;
+	-webkit-text-size-adjust:none;
+	text-size-adjust:none;
+}
+@-moz-keyframes move {
+	0%, 100% { top:2px; left:2px; border-color:#f00; }
+	25% { top:2px; left:2px; }
+	50% { top:-2px; border-color:#00f; }
+	75% { top:2px; left:-2px; }
+}
+@-webkit-keyframes move {
+	0%, 100% { top:-2px; left:-2px; border-color:#f00; }
+	25% { top:2px; left:2px; }
+	50% { top:-2px; border-color:#00f; }
+	75% { top:2px; left:-2px; }
+}
+@keyframes move {
+	0%, 100% { top:2px; left:2px; border-color:#f00; }
+	25% { top:2px; left:2px; }
+	50% { top:-2px; border-color:#00f; }
+	75% { top:2px; left:-2px; }
+}
+blockquote {
+	-moz-animation: move 0.2s linear infinite;
+	-webkit-animation: move 0.2s linear infinite;
+	animation: move 0.2s linear infinite;
+	position:relative;
+	max-width:460px;
+	min-width:460px;
+	width:460px;
+	margin:15% auto;
+	border:10px solid #0f0;
+	padding:10px;
+	font-size:.8em;
+	z-index:10;
+	cursor:pointer;
+}
+blockquote:hover {
+	-moz-animation:none;
+	-webkit-animation:none;
+	animation:none;
+}
+@media screen and (max-width:500px) {
+	blockquote {
+		max-width:89%;
+		min-width:89%;
+		width:89%;
+		border:2% solid #0f0;
+		padding:2%;
+	}
+}
+p {
+	font-size:2em;
+	line-height:1.3em;
+	margin-bottom:20px;
+}
+a { color:#000; }
+p a {font-size:1em;}
+header {
+	position:fixed;
+	top:2px;
+	left:2px;
+	font-size:.9em;
+}

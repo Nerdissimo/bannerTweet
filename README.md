@@ -1,6 +1,6 @@
 # bannerTweet
 
-Trasforma un tweet in un banner anni '90/2000.
+Trasforma un tweet in un banner anni '90.
 
 
 ## URL
